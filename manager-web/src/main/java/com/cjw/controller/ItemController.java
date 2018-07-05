@@ -1,5 +1,6 @@
 package com.cjw.controller;
 
+import com.cjw.common.EasyUIDataGridResult;
 import com.cjw.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,5 +28,11 @@ public class ItemController {
     public String getItemById(@PathVariable Long itemId) {
         TbItem tbItem = itemService.getItemById(itemId);
         return tbItem.toString();
+    }
+
+    @RequestMapping("/item/list")
+    @ResponseBody
+    public EasyUIDataGridResult getItemList(Integer page,Integer rows){
+        return itemService.getItemList(page, rows);
     }
 }

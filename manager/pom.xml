@@ -16,9 +16,10 @@
         <module>manager-pojo</module>
         <module>manager-interface</module>
         <module>manager-service</module>
-        <module>manager-web</module>
+
     </modules>
     <dependencies>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jms</artifactId>
@@ -54,6 +55,11 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cjw.mall</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
     </dependencies>

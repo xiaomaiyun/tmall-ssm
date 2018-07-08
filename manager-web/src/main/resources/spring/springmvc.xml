@@ -14,6 +14,12 @@
     <!-- 配置资源映射 -->
     <mvc:resources location="/css/" mapping="/css/**"/>
     <mvc:resources location="/js/" mapping="/js/**"/>
+    <!--配置多媒体解析-->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="maxUploadSize" value="88888888"/>
+    </bean>
     <!--异常捕获处理器-->
     <!--<bean id="itemsHandlerException" class="com.cjw.test.utils.ItemsHandlerException"/>-->
     <!--配置拦截器-->
@@ -26,7 +32,8 @@
     </mvc:interceptors>-->
     <!-- 引用dubbo服务 -->
     <dubbo:application name="manager-web"/>
-    <dubbo:registry protocol="zookeeper" address="192.168.57.128:2181"/>
+    <!--<dubbo:registry protocol="zookeeper" address="192.168.57.128:2181"/>-->
+    <dubbo:registry protocol="zookeeper" address="39.107.77.12:2181"/>
     <dubbo:reference interface="com.cjw.service.ItemService" id="itemService" />
     <dubbo:reference interface="com.cjw.service.ItemCatService" id="itemCatService" />
 </beans>

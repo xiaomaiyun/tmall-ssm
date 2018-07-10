@@ -2,7 +2,7 @@ package com.cjw.service.impl;
 
 import com.cjw.common.EasyUIDataGridResult;
 import com.cjw.common.utils.IDUtils;
-import com.cjw.common.utils.ItemResult;
+import com.cjw.common.utils.OperationResult;
 import com.cjw.mapper.TbItemDescMapper;
 import com.cjw.mapper.TbItemMapper;
 import com.cjw.pojo.TbItemDesc;
@@ -55,7 +55,7 @@ public class ItemServiceImpl implements ItemService {
         return result;
     }
 
-    public ItemResult addItem(TbItem item, String desc) {
+    public OperationResult addItem(TbItem item, String desc) {
         long itemId = IDUtils.genItemId();
         item.setId(itemId);
         //1-正常，2-下架，3-删除
@@ -70,56 +70,56 @@ public class ItemServiceImpl implements ItemService {
         itemDesc.setCreated(new Date());
         itemDesc.setUpdated(new Date());
         itemDescMapper.insert(itemDesc);
-        return ItemResult.ok();
+        return OperationResult.ok();
     }
 
 
     //删除商品
-    public ItemResult deleteItem(Long[] ids) {
+    public OperationResult deleteItem(Long[] ids) {
         for (int i = 0; i < ids.length; i++) {
             itemMapper.deleteByPrimaryKey(ids[i]);
             itemDescMapper.deleteByPrimaryKey(ids[i]);
         }
-        return ItemResult.ok();
+        return OperationResult.ok();
     }
 
     //下架商品
-    public ItemResult instock(Long[] ids) {
+    public OperationResult instock(Long[] ids) {
         for (int i = 0; i < ids.length; i++) {
             TbItem item = itemMapper.selectByPrimaryKey(ids[i]);
             item.setStatus((byte) 2);
             itemMapper.updateByPrimaryKey(item);
         }
-        return ItemResult.ok();
+        return OperationResult.ok();
     }
 
     //上架商品
-    public ItemResult reshelf(Long[] ids) {
+    public OperationResult reshelf(Long[] ids) {
         for (int i = 0; i < ids.length; i++) {
             TbItem item = itemMapper.selectByPrimaryKey(ids[i]);
             item.setStatus((byte) 1);
             itemMapper.updateByPrimaryKey(item);
         }
-        return ItemResult.ok();
+        return OperationResult.ok();
     }
 
     //修改商品信息
-    public ItemResult queryItemDesc(long id) {
-        return ItemResult.ok(itemDescMapper.selectByPrimaryKey(id));
+    public OperationResult queryItemDesc(long id) {
+        return OperationResult.ok(itemDescMapper.selectByPrimaryKey(id));
     }
 
-    public ItemResult queryItem(long id) {
-        return ItemResult.ok(itemMapper.selectByPrimaryKey(id));
+    public OperationResult queryItem(long id) {
+        return OperationResult.ok(itemMapper.selectByPrimaryKey(id));
     }
 
-    public ItemResult updateItem(TbItem item, String desc) {
+    public OperationResult updateItem(TbItem item, String desc) {
         item.setUpdated(new Date());
         itemMapper.updateByPrimaryKey(item);
         TbItemDesc itemDesc = new TbItemDesc();
         itemDesc.setItemDesc(desc);
         itemDesc.setUpdated(new Date());
         itemDescMapper.updateByPrimaryKey(itemDesc);
-        return ItemResult.ok();
+        return OperationResult.ok();
     }
 
 }

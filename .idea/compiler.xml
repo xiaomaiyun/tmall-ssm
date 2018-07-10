@@ -7,11 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
-        <module name="managerdao" />
-        <module name="managerinterface" />
-        <module name="managerpojo" />
-        <module name="managerservice" />
-        <module name="managerweb" />
+        <module name="content-interface" />
+        <module name="content-service" />
+        <module name="manager-dao" />
+        <module name="manager-interface" />
+        <module name="manager-pojo" />
+        <module name="manager-service" />
+        <module name="manager-web" />
+        <module name="portal-web" />
       </profile>
     </annotationProcessing>
   </component>

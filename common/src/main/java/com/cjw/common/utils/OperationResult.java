@@ -11,7 +11,7 @@ import java.util.List;
  * @Date: 2018/7/8
  * @Time: 16:05
  */
-public class ItemResult implements Serializable {
+public class OperationResult implements Serializable {
     private static final ObjectMapper MAPPER = new ObjectMapper();
     // 响应业务状态
     private Integer status;
@@ -45,37 +45,37 @@ public class ItemResult implements Serializable {
     public void setData(Object data) {
         this.data = data;
     }
-    public static ItemResult build(Integer status, String msg, Object data) {
-        return new ItemResult(status, msg, data);
+    public static OperationResult build(Integer status, String msg, Object data) {
+        return new OperationResult(status, msg, data);
     }
 
-    public static ItemResult ok(Object data) {
-        return new ItemResult(data);
+    public static OperationResult ok(Object data) {
+        return new OperationResult(data);
     }
 
-    public static ItemResult ok() {
-        return new ItemResult(null);
+    public static OperationResult ok() {
+        return new OperationResult(null);
     }
-    public ItemResult() {
+    public OperationResult() {
     }
-    public static ItemResult build(Integer status, String msg) {
-        return new ItemResult(status, msg, null);
+    public static OperationResult build(Integer status, String msg) {
+        return new OperationResult(status, msg, null);
     }
-    public ItemResult(Integer status, String msg, Object data) {
+    public OperationResult(Integer status, String msg, Object data) {
         this.status = status;
         this.msg = msg;
         this.data = data;
     }
 
-    public ItemResult(Object data) {
+    public OperationResult(Object data) {
         this.status = 200;
         this.msg = "OK";
         this.data = data;
     }
-    public static ItemResult formatToPojo(String jsonData, Class<?> clazz) {
+    public static OperationResult formatToPojo(String jsonData, Class<?> clazz) {
         try {
             if (clazz == null) {
-                return MAPPER.readValue(jsonData, ItemResult.class);
+                return MAPPER.readValue(jsonData, OperationResult.class);
             }
             JsonNode jsonNode = MAPPER.readTree(jsonData);
             JsonNode data = jsonNode.get("data");
@@ -99,9 +99,9 @@ public class ItemResult implements Serializable {
      * @param json
      * @return
      */
-    public static ItemResult format(String json) {
+    public static OperationResult format(String json) {
         try {
-            return MAPPER.readValue(json, ItemResult.class);
+            return MAPPER.readValue(json, OperationResult.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -115,7 +115,7 @@ public class ItemResult implements Serializable {
      * @param clazz 集合中的类型
      * @return
      */
-    public static ItemResult formatToList(String jsonData, Class<?> clazz) {
+    public static OperationResult formatToList(String jsonData, Class<?> clazz) {
         try {
             JsonNode jsonNode = MAPPER.readTree(jsonData);
             JsonNode data = jsonNode.get("data");

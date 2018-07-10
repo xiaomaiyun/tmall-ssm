@@ -1,7 +1,7 @@
 package com.cjw.controller;
 
 import com.cjw.common.EasyUIDataGridResult;
-import com.cjw.common.utils.ItemResult;
+import com.cjw.common.utils.OperationResult;
 import com.cjw.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,37 +42,37 @@ public class ItemController {
      */
     @RequestMapping("/item/save")
     @ResponseBody
-    public ItemResult addItem(TbItem item, String desc) {
+    public OperationResult addItem(TbItem item, String desc) {
         return itemService.addItem(item, desc);
     }
 
     @RequestMapping("/rest/item/delete")
     @ResponseBody
-    public ItemResult deleteItem(Long[] ids) {
+    public OperationResult deleteItem(Long[] ids) {
         return itemService.deleteItem(ids);
     }
 
     @RequestMapping("/rest/item/instock")
     @ResponseBody
-    public ItemResult instockItem(Long[] ids) {
+    public OperationResult instockItem(Long[] ids) {
         return itemService.instock(ids);
     }
 
     @RequestMapping("/rest/item/reshelf")
     @ResponseBody
-    public ItemResult reshelfItem(Long[] ids) {
+    public OperationResult reshelfItem(Long[] ids) {
         return itemService.reshelf(ids);
     }
 
     @RequestMapping("/rest/item/query/item/desc/{id}")
     @ResponseBody
-    public ItemResult queryItem(@PathVariable()long id) {
+    public OperationResult queryItem(@PathVariable()long id) {
         return itemService.queryItem(id);
     }
 
     @RequestMapping("/rest/item/param/item/query/{id}")
     @ResponseBody
-    public ItemResult queryItemDesc(@PathVariable()long id) {
+    public OperationResult queryItemDesc(@PathVariable()long id) {
         return itemService.queryItemDesc(id);
     }
 
@@ -83,7 +83,7 @@ public class ItemController {
 
     @RequestMapping("/rest/item/update")
     @ResponseBody
-    public ItemResult updateItem(TbItem item, String desc) {
+    public OperationResult updateItem(TbItem item, String desc) {
         return itemService.updateItem(item,desc);
     }
 }

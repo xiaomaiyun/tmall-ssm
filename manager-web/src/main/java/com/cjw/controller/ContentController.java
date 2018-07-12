@@ -28,6 +28,16 @@ public class ContentController {
     }
     @RequestMapping("/content/save")
     public OperationResult addContent(TbContent content) {
-        return contentService.addCategory(content);
+        return contentService.addContent(content);
+    }
+
+    @RequestMapping("/rest/content/edit")
+    public OperationResult updateContent(TbContent content) {
+        return contentService.updateContent(content);
+    }
+
+    @RequestMapping("/content/delete")
+    public OperationResult deleteContents(long[] ids) {
+        return contentService.deleteContents(ids);
     }
 }

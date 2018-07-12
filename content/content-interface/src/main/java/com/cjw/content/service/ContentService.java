@@ -16,5 +16,9 @@ public interface ContentService {
 
     List<TbContent> getContentById(long cid);
 
-    OperationResult addCategory(TbContent content);
+    OperationResult addContent(TbContent content);
+
+    OperationResult updateContent(TbContent content);
+
+    OperationResult deleteContents(long[] ids);
 }

@@ -39,6 +39,8 @@
         <zookeeper.version>3.4.6</zookeeper.version>
         <zkclient.version>0.1</zkclient.version>
         <qiniu-sdk.version>7.2.12</qiniu-sdk.version>
+        <jedis.version>2.9.0</jedis.version>
+        <solrj.version>7.2.1</solrj.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -191,6 +193,18 @@
                 <groupId>com.github.sgroschupf</groupId>
                 <artifactId>zkclient</artifactId>
                 <version>${zkclient.version}</version>
+            </dependency>
+            <!-- Redis客户端 -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+            <!-- solr客户端 -->
+            <dependency>
+                <groupId>org.apache.solr</groupId>
+                <artifactId>solr-solrj</artifactId>
+                <version>${solrj.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
